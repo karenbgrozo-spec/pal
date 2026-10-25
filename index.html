@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta Mayor | Asistencia Digital Humana y Segura</title>
+    <!-- Fuente inclusiva y moderna (Lexend) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --blue-hover: #2563eb;
+            --dark-blue: #0b1f3a;
+            --navy-surface: #102a4e;
+            --light-blue: #dbeafe;
+            --corp-bg: #eaf2fa;
+            --card-border: #d0e1f4;
+            --text-color: #1e293b;
+            --text-muted: #475569;
+            --white: #ffffff;
+            --whatsapp-green: #22c55e;
+            --whatsapp-dark: #15803d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Lexend', sans-serif; 
+            background-color: var(--corp-bg); 
+            color: var(--text-color); 
+            line-height: 1.7; 
+            font-size: 1.05rem; 
+            overflow-x: hidden;
+        }
+
+        /* BARRA SUPERIOR (HEADER) */
+        header { 
+            position: sticky; 
+            top: 0; 
+            background-color: var(--white); 
+            box-shadow: 0 6px 16px rgba(11, 31, 58, 0.08); 
+            z-index: 1000; 
+            border-bottom: 3px solid var(--light-blue); 
+        }
+        .nav-container { 
+            max-width: 1250px; 
+            margin: 0 auto; 
+            padding: 0.9rem 2rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.8rem; 
+            font-size: 1.45rem; 
+            font-weight: 800; 
+            color: var(--dark-blue); 
+            text-decoration: none; 
+            transition: transform 0.2s ease;
+        }
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        .logo-nav-img { 
+            width: 46px; 
+            height: 46px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            animation: pulse-slow 3s ease-in-out infinite; 
+        }
+        @keyframes pulse-slow { 
+            0%, 100% { transform: scale(1); } 
+            50% { transform: scale(1.08); } 
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 1.5rem; 
+            list-style: none; 
+            align-items: center; 
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text-color); 
+            font-weight: 600; 
+            padding: 0.5rem 0.8rem; 
+            border-radius: 8px; 
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover { 
+            color: var(--primary-blue); 
+            background-color: var(--light-blue); 
+        }
+
+        /* BOTONES 3D CON MOVIMIENTO */
+        .btn-3d {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            padding: 0.95rem 1.9rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }
+
+        .btn-3d-primary {
+            background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 0 #1e3a8a, 0 12px 20px rgba(29, 78, 216, 0.35);
+        }
+        .btn-3d-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 #1e3a8a, 0 18px 25px rgba(29, 78, 216, 0.45);
+        }
+        .btn-3d-primary:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #1e3a8a, 0 4px 8px rgba(29, 78, 216, 0.3);
+        }
+
+        .btn-3d-whatsapp {
+            background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 0 #15803d, 0 12px 20px rgba(34, 197, 94, 0.35);
+        }
+        .btn-3d-whatsapp:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 #15803d, 0 18px 25px rgba(34, 197, 94, 0.45);
+        }
+        .btn-3d-whatsapp:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #15803d, 0 4px 8px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-3d-light {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            color: var(--dark-blue);
+            box-shadow: 0 6px 0 #cbd5e1, 0 10px 18px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        .btn-3d-light:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 0 #cbd5e1, 0 16px 22px rgba(0,0,0,0.12);
+        }
+        .btn-3d-light:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #cbd5e1, 0 4px 6px rgba(0,0,0,0.06);
+        }
+
+        .btn-3d-sm {
+            padding: 0.65rem 1.3rem;
+            font-size: 0.95rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 0 #1e3a8a, 0 8px 14px rgba(29, 78, 216, 0.25);
+        }
+        .btn-3d-sm:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 0 #1e3a8a, 0 12px 18px rgba(29, 78, 216, 0.35);
+        }
+        .btn-3d-sm:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #1e3a8a, 0 3px 6px rgba(29, 78, 216, 0.2);
+        }
+
+        .btn-bounce-motion {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* SECCIÓN HERO */
+        .hero { 
+            background: linear-gradient(135deg, #0b1f3a 0%, #102a4e 45%, #1d4ed8 100%); 
+            padding: 5rem 2rem 6rem; 
+            text-align: center; 
+            color: var(--white); 
+            position: relative;
+        }
+        .hero-logo-container { margin-bottom: 1.8rem; }
+        .hero-logo-img { 
+            width: 145px; 
+            height: 145px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            background: var(--white); 
+            padding: 6px; 
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
+            border: 4px solid rgba(255, 255, 255, 0.4); 
+            animation: float-logo 3.8s ease-in-out infinite; 
+            transition: transform 0.3s ease; 
+        }
+        .hero-logo-img:hover { transform: scale(1.08) rotate(2deg); }
+        @keyframes float-logo {
+            0%, 100% { transform: translateY(0); box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); }
+            50% { transform: translateY(-12px); box-shadow: 0 24px 35px rgba(0, 0, 0, 0.45); }
+        }
+
+        .hero h1 { 
+            font-size: 2.85rem; 
+            color: #ffffff; 
+            margin-bottom: 1.2rem; 
+            font-weight: 800; 
+            line-height: 1.25;
+            letter-spacing: -0.02em; 
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero p { 
+            font-size: 1.25rem; 
+            max-width: 820px; 
+            margin: 0 auto 2.2rem; 
+            color: #dbeafe; 
+            font-weight: 400; 
+            line-height: 1.7; 
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        /* BADGES DE CONFIANZA HERO */
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 950px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 2rem;
+        }
+        .hero-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #f1f5f9;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .hero-badge-item i {
+            font-size: 1.3rem;
+            color: #60a5fa;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        /* ESTRUCTURA GENERAL DE CONTENEDORES */
+        .container { max-width: 1200px; margin: 0 auto; padding: 4.5rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-subtitle { 
+            color: var(--primary-blue); 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            background: #dbeafe;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+        }
+        .section-title { font-size: 2.3rem; color: var(--dark-blue); font-weight: 800; }
+        .section-desc { color: var(--text-muted); font-size: 1.15rem; max-width: 650px; margin: 0.8rem auto 0; }
+
+        /* TARJETAS CON EFECTO 3D */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.2rem; }
+        .card-3d { 
+            background: var(--white); 
+            padding: 2.5rem 2.2rem; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 0 var(--card-border), 0 18px 28px rgba(11, 31, 58, 0.08); 
+            border: 1px solid #e2ecf8;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-3d:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 18px 0 var(--card-border), 0 28px 36px rgba(11, 31, 58, 0.15); 
+        }
+        .card-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.4rem;
+            box-shadow: 0 4px 8px rgba(29, 78, 216, 0.12);
+        }
+        .card-3d h3 { color: var(--dark-blue); margin-bottom: 0.8rem; font-size: 1.45rem; font-weight: 700; }
+        .card-3d p { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.8rem;
+        }
+        .card-features li {
+            font-size: 0.98rem;
+            color: var(--text-color);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .card-features li i {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        /* SECCIÓN DE BENEFICIOS */
+        .benefits-section {
+            background-color: var(--white);
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .benefit-box {
+            background: var(--corp-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 6px 0 #cbd5e1;
+            transition: transform 0.2s ease;
+        }
+        .benefit-box:hover {
+            transform: translateY(-4px);
+        }
+        .benefit-box h4 {
+            font-size: 1.25rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .benefit-box p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP 3D */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #22c55e, #16a34a);
+            color: white;
+            font-size: 2.1rem;
+            box-shadow: 0 6px 0 #15803d, 0 15px 25px rgba(22, 163, 74, 0.4);
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: float-wa 3s ease-in-out infinite;
+        }
+        .floating-whatsapp:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 10px 0 #15803d, 0 20px 30px rgba(22, 163, 74, 0.5);
+        }
+        .floating-whatsapp:active {
+            transform: scale(0.95) translateY(4px);
+            box-shadow: 0 2px 0 #15803d, 0 6px 10px rgba(22, 163, 74, 0.3);
+        }
+        @keyframes float-wa {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* BANNER DE CONTACTO DIRECTO */
+        .cta-banner {
+            background: linear-gradient(135deg, #0b1f3a 0%, #1e3a8a 100%);
+            border-radius: 24px;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            color: var(--white);
+            box-shadow: 0 12px 0 #0a1728, 0 25px 40px rgba(11, 31, 58, 0.25);
+            margin-top: 2rem;
+        }
+        .cta-banner h2 { font-size: 2.3rem; margin-bottom: 1rem; font-weight: 800; }
+        .cta-banner p { font-size: 1.2rem; color: #dbeafe; max-width: 700px; margin: 0 auto 2.2rem; }
+
+        /* FOOTER */
+        footer { 
+            background-color: var(--dark-blue); 
+            color: var(--white); 
+            padding: 3.5rem 2rem 2rem; 
+            margin-top: 4rem; 
+            border-top: 4px solid var(--primary-blue);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+        .footer-col p {
+            color: #94a3b8;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer-col ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-col ul li a:hover {
+            color: #60a5fa;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1e293b;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .nav-links { display: none; }
+            .nav-container { justify-content: center; }
+            .hero-buttons { flex-direction: column; align-items: stretch; }
+            .btn-3d { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP 3D -->
+    <a href="https://wa.me/573000000000?text=Hola,%20deseo%20asistencia%20digital%20de%20Conecta%20Mayor" class="floating-whatsapp" target="_blank" title="Escríbenos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <div class="nav-container">
+            <a href="#inicio" class="logo">
+                <img src="logo.jpg" alt="Logo Conecta Mayor" class="logo-nav-img">
+                <span>Conecta Mayor</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#servicios">SERVICIOS</a></li>
+                <li><a href="#beneficios">BENEFICIOS</a></li>
+                <li><a href="#cultura">NUESTRA EMPRESA</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+                <li>
+                    <a href="https://wa.me/573000000000" target="_blank" class="btn-3d btn-3d-primary btn-3d-sm">
+                        <i class="fa-solid fa-phone"></i> Solicitar Ayuda
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- CABECERA PRINCIPAL (HERO) -->
+    <section id="inicio" class="hero">
+        <div class="hero-logo-container">
+            <img src="logo.jpg" alt="Logo Conecta Mayor" class="hero-logo-img">
+        </div>
+        <h1>Cuidamos de ti y de tus seres queridos en el mundo digital</h1>
+        <p>Reclamamos tus medicamentos, gestionamos citas médicas y pagos en línea con paciencia, empatía y total seguridad.</p>
+        
+        <div class="hero-buttons">
+            <a href="#servicios" class="btn-3d btn-3d-primary btn-bounce-motion">
+                <i class="fa-solid fa-hand-holding-heart"></i> Ver Servicios
+            </a>
+            <a href="https://wa.me/573000000000?text=Hola,%20deseo%20más%20información%20sobre%20Conecta%20Mayor" target="_blank" class="btn-3d btn-3d-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Hablar con un Asesor
+            </a>
+            <a href="#contacto" class="btn-3d btn-3d-light">
+                <i class="fa-solid fa-calendar-check"></i> Agendar Cita
+            </a>
+        </div>
+
+        <div class="hero-badges">
+            <div class="hero-badge-item">
+                <i class="fa-solid fa-shield-heart"></i>
+                <span>100% Asistencia Personalizada</span>
+            </div>
+            <div class="hero-badge-item">
+                <i class="fa-solid fa-lock"></i>
+                <span>Seguridad y Privacidad Total</span>
+            </div>
+            <div class="hero-badge-item">
+                <i class="fa-solid fa-house-medical"></i>
+                <span>Trámites Rápidos sin Salir de Casa</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section id="servicios" class="container">
+        <div class="section-header">
+            <span class="section-subtitle">¿En qué te podemos ayudar?</span>
+            <h2 class="section-title">Nuestros Servicios de Asistencia</h2>
+            <p class="section-desc">Hacemos los trámites digitales por ti con calidez humana para que disfrutes de tu tiempo libre con tranquilidad.</p>
+        </div>
+
+        <div class="grid-cards">
+            <!-- Servicio 1 -->
+            <div class="card-3d">
+                <div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-pills"></i>
+                    </div>
+                    <h3>Reclamación de Medicamentos</h3>
+                    <p>Gestionamos la autorización y reclamación de tus fórmulas médicas ante EPS y farmacias, coordinando la entrega segura.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Cero filas en farmacias</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Verificación de fórmulas vigentes</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Entrega puntual y coordinada</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/573000000000?text=Hola,%20necesito%20ayuda%20con%20medicamentos" target="_blank" class="btn-3d btn-3d-primary btn-3d-sm">
+                    <i class="fa-solid fa-paper-plane"></i> Solicitar Medicamentos
+                </a>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="card-3d">
+                <div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                    </div>
+                    <h3>Gestión de Citas Médicas</h3>
+                    <p>Apartamos tus citas de medicina general, especialistas y exámenes diagnósticos en las plataformas digitales correspondientes.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Recordatorios previos a tu cita</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Búsqueda de fechas más cercanas</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Asistencia para citas virtuales</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/573000000000?text=Hola,%20necesito%20agendar%20una%20cita%20médica" target="_blank" class="btn-3d btn-3d-primary btn-3d-sm">
+                    <i class="fa-solid fa-calendar-check"></i> Agendar Mi Cita
+                </a>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="card-3d">
+                <div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Pagos y Trámites en Línea</h3>
+                    <p>Te acompañamos en el pago de recibos públicos, certificaciones, trámites bancarios y consultas de pensiones con total transparencia.</p>
+                    <ul class="card-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Facturas de agua, luz, gas e internet</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Comprobantes enviados al instante</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Confidencialidad garantizada</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/573000000000?text=Hola,%20necesito%20ayuda%20con%20pagos%20en%20línea" target="_blank" class="btn-3d btn-3d-primary btn-3d-sm">
+                    <i class="fa-solid fa-shield-halved"></i> Realizar un Trámite
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE BENEFICIOS -->
+    <section id="beneficios" class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">¿Por qué elegirnos?</span>
+                <h2 class="section-title">Tu Tranquilidad en Buenas Manos</h2>
+                <p class="section-desc">Diseñamos una experiencia cercana, sin tecnicismos difíciles y con el respeto que tú y tu familia merecen.</p>
+            </div>
+
+            <div class="grid-cards">
+                <div class="benefit-box">
+                    <h4><i class="fa-solid fa-heart text-primary"></i> Paciencia y Empatía</h4>
+                    <p>Nos tomamos el tiempo necesario para escucharte, explicarte con claridad y atender cada detalle a tu propio ritmo.</p>
+                </div>
+                <div class="benefit-box">
+                    <h4><i class="fa-solid fa-user-shield text-primary"></i> Seguridad Transparente</h4>
+                    <p>Nunca compartimos tus datos. Cada paso del trámite es informado en tiempo real para tu total confianza.</p>
+                </div>
+                <div class="benefit-box">
+                    <h4><i class="fa-solid fa-clock text-primary"></i> Ahorro de Tiempo y Filas</h4>
+                    <p>Evita traslados innecesarios, filas agotadoras y la frustración de páginas web complicadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section id="cultura" class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Nuestra Filosofía</span>
+            <h2 class="section-title">Misión y Visión</h2>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card-3d">
+                <div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Facilitar la vida de las personas de la tercera edad y sus familias mediante una atención digital empática, transparente y humanizada que reduce la brecha tecnológica y devuelve la tranquilidad en cada hogar.</p>
+                </div>
+            </div>
+            <div class="card-3d">
+                <div>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Ser la empresa líder e innovadora en servicios de asistencia digital inclusiva en la región, reconocida por su excelencia en talento humano, confiabilidad y compromiso con el bienestar integral de los adultos mayores.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BANNER DE CONTACTO LLAMATIVO CON BOTONES 3D -->
+        <div id="contacto" class="cta-banner">
+            <h2>¿Tienes dudas o necesitas ayuda hoy mismo?</h2>
+            <p>Comunícate con uno de nuestros asesores por WhatsApp o llamada telefónica. Estamos listos para asistirte.</p>
+            <div class="hero-buttons" style="margin-bottom: 0;">
+                <a href="https://wa.me/573000000000?text=Hola,%20deseo%20hablar%20con%20un%20asesor%20de%20Conecta%20Mayor" target="_blank" class="btn-3d btn-3d-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Escríbenos por WhatsApp
+                </a>
+                <a href="tel:+573000000000" class="btn-3d btn-3d-light">
+                    <i class="fa-solid fa-phone-volume"></i> Llamar Directamente
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CORPORATIVO -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Conecta Mayor</h4>
+                <p>Hacemos fácil lo que más te preocupa. Asistencia digital cálida, inclusiva y humana para adultos mayores y familias.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#beneficios">Beneficios</a></li>
+                    <li><a href="#cultura">Misión y Visión</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto y Horarios</h4>
+                <p><i class="fa-solid fa-clock"></i> Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                <p><i class="fa-solid fa-calendar-day"></i> Sábados: 8:00 AM - 1:00 PM</p>
+                <p><i class="fa-solid fa-envelope"></i> contacto@conectamayor.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Conecta Mayor - Talento Humano y Servicio al Cliente. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
